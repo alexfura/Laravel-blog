@@ -38,8 +38,12 @@ class ArticleController extends Controller
 
     public function getArticleByTopic(string $slug)
     {
-        $articles = Topic::where('title', $slug)->getArticles;
+        $topic = Topic::where('title', $slug)->first();
 
-        return view('topic')->with('articles', $articles);
+        if(!$topic) {
+            abort(404);
+        }
+
+        return view('topic')->with('articles', $topic->articles);
     }
 }

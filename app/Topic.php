@@ -15,7 +15,7 @@ class Topic extends Model
      * Get articles for this topic
      */
 
-    public function getArticles() {
-        return $this->hasMany('App\Article', '');
+    public function articles() {
+        return $this->hasMany('App\Article', 'topic');
     }
 }
