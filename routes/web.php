@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,15 +10,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('dupa', function () {
-    return "Chida?";
-});
-
-Route::get('about', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController')->name('home');
+Route::get('articles', 'ArticleController@index')->name('articles');
+Route::get('articles/{id}', 'ArticleController@show')->name('article');
+Route::get('articles/topic/{slug}', 'ArticleController@getArticleByTopic');
