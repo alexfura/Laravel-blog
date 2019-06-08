@@ -39,6 +39,7 @@ class ArticleController extends Controller
     public function getArticleByTopic(int $id)
     {
         $topic = Topic::findOrFail($id);
-        return view('topic')->with('articles', $topic->articles);
+        $articles = $topic->articles->paginate(10);
+        return view('topic',['topic' => $topic, 'articles' => $articles]);
     }
 }
