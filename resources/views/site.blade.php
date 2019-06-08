@@ -7,7 +7,6 @@
 @section('content')
     <section id="banner">
         <div class="content">
-            <last
             <header>
                 <h1>{{ $articles[0]->title }}</h1>
                 <p>{{ $articles[0]->creation_time }}</p>

@@ -10,7 +10,23 @@
 |
 */
 
+/**
+ * Route pattern for id field
+ */
+Route::pattern('id', '[0-9]+');
+/**
+ * Home page
+ */
 Route::get('/', 'HomeController')->name('home');
+/**
+ * Pages with articles
+ */
 Route::get('articles', 'ArticleController@index')->name('articles');
+/**
+ * Page with article by id
+ */
 Route::get('articles/{id}', 'ArticleController@show')->name('article');
-Route::get('articles/topic/{slug}', 'ArticleController@getArticleByTopic');
+/**
+ * Page for topic and article by topic
+ */
+Route::get('articles/topic/{id}', 'ArticleController@getArticleByTopic')->name('article-by-topic');

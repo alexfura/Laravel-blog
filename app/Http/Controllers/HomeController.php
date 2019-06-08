@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $articles = Article::orderBy('id', 'desc')->limit(5)->get();
+        $articles = Article::getLastArticles(6);
         return view('site')->with('articles', $articles);
     }
 }

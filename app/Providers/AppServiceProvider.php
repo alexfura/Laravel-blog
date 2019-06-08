@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Topic;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,11 +20,14 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     * shares topics
      *
-     * @return void
+     * @return
      */
     public function boot()
     {
         //
+        $sidebarlinks = Topic::orderBy('title')->get();
+        return view()->share('sidebarlinks', $sidebarlinks);
     }
 }

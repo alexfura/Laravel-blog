@@ -17,7 +17,7 @@
 
             <!-- Header -->
             <header id="header">
-                <a href="#" class="logo"><strong>Alex Furghailov Blog</strong></a>
+                <a href="{{ route('home') }}" class="logo"><strong>Alex Furghailov Blog</strong></a>
                 <ul class="icons">
                     <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                     <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -48,7 +48,11 @@
                         <h2>Menu</h2>
                     </header>
                     <ul>
-                        @yield('sidebar')
+                        @section('sidebar')
+                            @foreach($sidebarlinks as $link)
+                            <li><a href="{{ route('article-by-topic', ['id' => $link->id]) }}">{{ $link->title }}</a></li>
+                            @endforeach
+                        @show
                     </ul>
                 </nav>
 

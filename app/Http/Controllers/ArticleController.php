@@ -27,7 +27,7 @@ class ArticleController extends Controller
      */
     public function show(int $id)
     {
-        $data = Article::where('id', $id)->get();
+        $data = Article::findOrFail($id);
         return view('article')->with('article', $data);
     }
 
@@ -36,14 +36,9 @@ class ArticleController extends Controller
      * @param string $topic
      */
 
-    public function getArticleByTopic(string $slug)
+    public function getArticleByTopic(int $id)
     {
-        $topic = Topic::where('title', $slug)->first();
-
-        if(!$topic) {
-            abort(404);
-        }
-
+        $topic = Topic::findOrFail($id);
         return view('topic')->with('articles', $topic->articles);
     }
 }

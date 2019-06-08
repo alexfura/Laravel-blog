@@ -3,12 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Topic extends Model
 {
     protected $table = 'topic';
 
-    CONST created_at = 'created';
+
+    CONST CREATED_AT = 'created';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -17,5 +19,10 @@ class Topic extends Model
 
     public function articles() {
         return $this->hasMany('App\Article', 'topic');
+    }
+
+    public function getRouteKeyName()
+    {
+        return Str::slug($this->title);
     }
 }
