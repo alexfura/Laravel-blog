@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Article;
 use App\Topic;
 
@@ -39,7 +38,7 @@ class ArticleController extends Controller
     public function getArticleByTopic(int $id)
     {
         $topic = Topic::findOrFail($id);
-        $articles = $topic->articles->paginate(10);
+        $articles = Article::where('topic', $topic->id)->paginate(1);
         return view('topic',['topic' => $topic, 'articles' => $articles]);
     }
 }

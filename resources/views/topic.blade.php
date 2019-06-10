@@ -13,4 +13,6 @@
         <h1>{{ $article->title }}</h1>
         <p>{{ substr($article->text_field, 0, 100) }}</p>
     @endforeach
+
+    {{ $articles->links() }}
 @stop
